@@ -6,12 +6,19 @@ const human = {
     age:29
 };
 
-alert(`${human.name}(${human.age})`);
+console.log(`${human.name}(${human.age})`)
 
 human.name = "B太郎";
-alert(`${human.name}(${human.age})`);
+console.log(`${human.name}(${human.age})`)
 
 human.address = 'Tokyo';
-alert(`${human.name}(${human.age} ) ${human.address}`);
+console.log(`${human.name}(${human.age} ) ${human.address}`);
 
+/**
+ * 配列もconstでは変更できる
+ */
+const arr = ['dog','cat'];
+alert(arr);
 
+arr.push('monkey');
+alert(arr);
