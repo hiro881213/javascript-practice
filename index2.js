@@ -125,5 +125,5 @@ const checkSum = (num1,num2) => {
     return num1+num2 > 100 ? '100を超えています': '許容範囲内です';
 }
 
-alert(checkSum(10,20));
-alert(checkSum(100,30));
+console.log(checkSum(10,20));
+console.log(checkSum(100,30));
