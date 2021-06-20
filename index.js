@@ -55,5 +55,10 @@ console.log(`私の名前は${name}です。${age}歳です`);
 const arrMyProfile = ['Sam',23];
 const [user, ages] = arrMyProfile;
 
-alert(`私の名前は${user}です。${ages}歳です`);
+console.log(`私の名前は${user}です。${ages}歳です`);
 
+/**
+ * デフォルト値
+ */
+const sayHello = (User='ゲスト') => alert(`こんにちは${User}さん`);
+sayHello();
