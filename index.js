@@ -85,3 +85,25 @@ const arr7 = [...arr4,...arr5];
 
 console.log(arr7);
 
+/**
+ * mapとfilter
+ */
+const nameArr = ["A","B","C"];
+const nameArr2 = nameArr.map((name) => {
+    return name;
+});
+
+console.log(nameArr2);
+
+nameArr2.map((name) => console.log(name));
+
+// filter
+const numArr = [1,2,3,4,5];
+const newNumArr = numArr.filter((num) => {
+    return num % 2 ===1; // 出力条件を書く
+});
+
+console.log(newNumArr);
+
+// 順番を取得する
+nameArr2.map((name,index) => console.log(`${index+1}番目は${name}です。`));
