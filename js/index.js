@@ -1,4 +1,4 @@
-
+//import "../css/styles.css"
 // 追加ボタンクリック処理
 const onClickAdd = () => {
 
@@ -20,9 +20,29 @@ const onClickAdd = () => {
     // liタグにテキストを挿入する
     li.innerText = inputText;
 
+    // buttonタグ(完了ボタン)を作成する
+    const completeButton = document.createElement("button");
+    completeButton.innerText = "完了";
+
+    // 完了ボタンクリックイベント
+    completeButton.addEventListener("click", () => {
+        alert();
+    });
+
+    // buttonタグ(完了ボタン)を作成する
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "削除";
+
+    // 削除ボタンクリックイベント
+    deleteButton.addEventListener("click", () => {
+        alert();
+    })
+
     // divタグの子要素に各要素を設定
     div.appendChild(li);
-
+    div.appendChild(completeButton);
+    div.appendChild(deleteButton);
+    
     document.getElementById('incomplete-list').appendChild(div);
 }
 
