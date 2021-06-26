@@ -8,6 +8,22 @@ const onClickAdd = () => {
     // テキストボックスの値を初期化する
     document.getElementById('add-text').value = '';
 
+    // 未完了リストに追加する
+    createIncompleteList(inputText);
+
+}
+
+// 追加ボタンにクリックイベントを付与する
+document.getElementById("add-button").addEventListener("click", () => onClickAdd());
+
+/**
+ * 
+ * 未完了リスト生成処理
+ * 
+ * @param {*} text 
+ */
+const createIncompleteList = (text) => {
+
     // div生成
     const div = document.createElement("div");
 
@@ -45,6 +61,23 @@ const onClickAdd = () => {
 
         // 戻すボタンを生成する
         const backButton = document.createElement("button");
+
+        // 戻すボタンクリック処理
+        backButton.addEventListener("click", () => {
+            
+            // 削除対象のTODOを取得する
+            const deleteTarget = backButton.parentNode.parentNode;
+
+            // 削除対象のTODOを削除する
+            document.getElementById('complete-list').removeChild(deleteTarget);
+
+            const text = backButton.parentNode.firstChild.innerText;
+        
+            // 未完了リストに追加する
+            createIncompleteList(text);
+        
+        });
+
         backButton.innerText = '戻す';
 
         // TODO内容をセットする
@@ -78,7 +111,7 @@ const onClickAdd = () => {
     const label = document.createElement("label");
     
     // divタグにテキストを挿入する
-    label.innerText = inputText;
+    label.innerText = text;
 
     // divタグの子要素に各要素を設定
 
@@ -97,10 +130,8 @@ const onClickAdd = () => {
     // liをDOMに配置する
     document.getElementById('incomplete-list').appendChild(li);
 
-}
 
-// 追加ボタンにクリックイベントを付与する
-document.getElementById("add-button").addEventListener("click", () => onClickAdd());
+}
 
 /**
  * 
