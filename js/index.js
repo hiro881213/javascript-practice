@@ -39,10 +39,10 @@ const onClickAdd = () => {
     })
 
     // divタグの子要素に各要素を設定
+    li.appendChild(completeButton);
+    li.appendChild(deleteButton);
     div.appendChild(li);
-    div.appendChild(completeButton);
-    div.appendChild(deleteButton);
-    
+
     document.getElementById('incomplete-list').appendChild(div);
 }
 
