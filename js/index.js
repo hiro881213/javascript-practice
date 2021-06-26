@@ -39,9 +39,9 @@ const createIncompleteList = (text) => {
 
     // 完了ボタンクリックイベント
     completeButton.addEventListener("click", () => {
-
+        
         // 完了対象の親ノードを取得する
-        deleteFromIncompleteList(completeButton.parentNode.parentNode);
+        deleteElement('incomplete-list',completeButton.parentNode.parentNode);
 
         // 完了リストに追加する要素
         const addTarget = completeButton.parentNode;
@@ -64,13 +64,11 @@ const createIncompleteList = (text) => {
 
         // 戻すボタンクリック処理
         backButton.addEventListener("click", () => {
-            
-            // 削除対象のTODOを取得する
-            const deleteTarget = backButton.parentNode.parentNode;
 
             // 削除対象のTODOを削除する
-            document.getElementById('complete-list').removeChild(deleteTarget);
+            deleteElement('complete-list',backButton.parentNode.parentNode);
 
+            // 戻す対象のTODO取得する
             const text = backButton.parentNode.firstChild.innerText;
         
             // 未完了リストに追加する
@@ -104,7 +102,7 @@ const createIncompleteList = (text) => {
     deleteButton.addEventListener("click", () => {
 
         // 削除対象の親ノードを取得する
-        deleteFromIncompleteList(deleteButton.parentNode.parentNode);
+        deleteElement('incomplete-list',deleteButton.parentNode.parentNode);
    
     });
     // labelタグ生成
@@ -135,14 +133,12 @@ const createIncompleteList = (text) => {
 
 /**
  * 
- * 未完了リストから対象の項目を削除する
+ * 対象の項目を削除する
  * 
  * @param {} target 対象要素
  * 
  */
-const deleteFromIncompleteList = (target) => {
-        
+const deleteElement = (targetID,targetElement) => {
     // 指定の要素を削除する
-    document.getElementById('incomplete-list').removeChild(target);
-
+    document.getElementById(targetID).removeChild(targetElement);
 }
