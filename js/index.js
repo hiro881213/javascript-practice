@@ -23,7 +23,41 @@ const onClickAdd = () => {
 
     // 完了ボタンクリックイベント
     completeButton.addEventListener("click", () => {
-        alert();
+
+        // 完了対象の親ノードを取得する
+        deleteFromIncompleteList(completeButton.parentNode.parentNode);
+
+        // 完了リストに追加する要素
+        const addTarget = completeButton.parentNode;
+
+        // テキストを取得する
+        const text = addTarget.firstElementChild.innerHTML;
+
+        // DIVのみにする
+        addTarget.textContent = null;
+
+        // liタグを生成する
+        const li = document.createElement("li");
+
+        // labelタグを生成する
+        const label = document.createElement("label");
+        label.innerText = text;
+
+        // 戻すボタンを生成する
+        const backButton = document.createElement("button");
+        backButton.innerText = '戻す';
+
+        // TODO内容をセットする
+        addTarget.appendChild(label);
+
+        // 戻すボタンをセットする
+        addTarget.appendChild(backButton);
+
+        // li要素配下にdivをセットする
+        li.appendChild(addTarget);
+
+        document.getElementById('complete-list').appendChild(li);
+
     });
 
     // buttonタグ(完了ボタン)を作成する
@@ -37,16 +71,20 @@ const onClickAdd = () => {
     deleteButton.addEventListener("click", () => {
 
         // 削除対象の親ノードを取得する
-        const deleteTarget = deleteButton.parentNode.parentNode;
-         
-        // 指定の要素を削除する
-        document.getElementById('incomplete-list').removeChild(deleteTarget);
+        deleteFromIncompleteList(deleteButton.parentNode.parentNode);
+   
     });
+    // labelタグ生成
+    const label = document.createElement("label");
     
     // divタグにテキストを挿入する
-    div.innerText = inputText;
+    label.innerText = inputText;
 
     // divタグの子要素に各要素を設定
+
+    // Labelタグをセット
+    div.appendChild(label);
+    
     // 完了ボタンをセット
     div.appendChild(completeButton);
     
@@ -61,7 +99,19 @@ const onClickAdd = () => {
 
 }
 
-
-
 // 追加ボタンにクリックイベントを付与する
 document.getElementById("add-button").addEventListener("click", () => onClickAdd());
+
+/**
+ * 
+ * 未完了リストから対象の項目を削除する
+ * 
+ * @param {} target 対象要素
+ * 
+ */
+const deleteFromIncompleteList = (target) => {
+        
+    // 指定の要素を削除する
+    document.getElementById('incomplete-list').removeChild(target);
+
+}
